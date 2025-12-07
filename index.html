@@ -24,40 +24,19 @@
         box-sizing: border-box;
       }
 
-      /* :root {
-        --forest-dark: #1a4d2e;
-        --forest-medium: #2d6a4f;
-        --forest-light: #52b788;
-        --forest-pale: #d8f3dc;
-        --bg-light: #f8faf9;
-        --bg-panel: #ffffff;
-        --text-primary: #1e1e1e;
-        --text-secondary: #5a5a5a;
-        --text-muted: #8e8e8e;
-        --blue-primary: #0066cc;
-        --blue-light: #4d94ff;
-        --red-primary: #d32f2f;
-        --red-light: #e57373;
-        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-        --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
-        --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
-        --border-radius: 12px;
-        --transition: all 0.3s ease;
-      } */
-
       :root {
         --prussian-blue: #080826ff;
         --muted-teal: #839788ff;
         --parchment: #efece8ff;
         --black-forest: #1a3a0fff;
-        --berry-lipstick: #cf2a5eff
+        --berry-lipstick: #cf2a5eff;
         --forest-dark: #1a3a0fff;
         --forest-medium: #2d6a4f;
         --forest-light: #52b788;
         --forest-pale: #d8f3dc;
         --bg-light: #f8faf9;
-        --bg-panel: --parchment;
-        --text-primary: #1a3a0fff;
+        --bg-panel: #ffffff;
+        --text-primary: #080826ff;
         --text-secondary: #5a5a5a;
         --text-muted: #8e8e8e;
         --blue-primary: #0066cc;
@@ -76,13 +55,13 @@
         height: 100vh;
         display: flex;
         flex-direction: row;
-        background: var(--parchment);
-        padding: 1vw;
+        background-color: var(--parchment);
+        padding: 10px;
         gap: 1vw;
       }
 
       #map {
-        height: 100vh;
+        height: 100%;
         width: 50%;
         border-radius: var(--border-radius);
         overflow: hidden;
@@ -91,10 +70,10 @@
       }
 
       #panel {
-        height: 100vh;
+        height: 100%;
         width: 50%;
         overflow-y: auto;
-        background: var(--parchment);
+        background-color: var(--prussian-blue);
         padding: 32px;
         border-radius: var(--border-radius);
         box-shadow: var(--shadow-lg);
@@ -105,12 +84,12 @@
       }
 
       #panel::-webkit-scrollbar-track {
-        background: var(--forest-pale);
+        background: var(--prussian-blue);
         border-radius: 4px;
       }
 
       #panel::-webkit-scrollbar-thumb {
-        background: var(--forest-medium);
+        background: var(--forest-pale);
         border-radius: 4px;
       }
 
@@ -147,19 +126,19 @@
         font-family: "Rufina", serif;
         margin-bottom: 32px;
         padding-bottom: 24px;
+        color: var(--parchment);
         border-bottom: 3px solid var(--forest-pale);
       }
 
       .panel-header h2 {
-        color: var(--forest-dark);
         font-size: 32px;
         font-weight: 700;
         margin-bottom: 8px;
         letter-spacing: -0.5px;
+        color: var(--parchment);
       }
 
       .panel-header p {
-        color: var(--text-secondary);
         font-size: 16px;
         font-weight: 500;
       }
@@ -180,14 +159,10 @@
       }
 
       .stat-card {
-        background: linear-gradient(
-          135deg,
-          var(--forest-pale) 0%,
-          #ffffff 100%
-        );
-        padding: 24px;
+        background: var(--parchment);
+        padding: 12px;
         border-radius: var(--border-radius);
-        border-left: 5px solid var(--forest-medium);
+        border-left: 5px solid var(--muted-teal);
         box-shadow: var(--shadow-sm);
         transition: var(--transition);
       }
@@ -206,7 +181,7 @@
 
       .stat-label {
         font-size: 13px;
-        color: var(--text-muted);
+        color: var(--text-primary);
         text-transform: uppercase;
         letter-spacing: 0.5px;
         font-weight: 600;
@@ -222,7 +197,7 @@
       .stat-value {
         font-size: 28px;
         font-weight: 700;
-        color: var(--forest-dark);
+        color: var(--text-primary);
         line-height: 1.2;
       }
 
@@ -246,11 +221,11 @@
 
       .chart-container {
         margin-bottom: 36px;
-        background: white;
+        background: var(--parchment);
         padding: 28px;
         border-radius: var(--border-radius);
         box-shadow: var(--shadow-sm);
-        border: 1px solid var(--forest-pale);
+        border: 5px solid var(--muted-teal);
       }
 
       @media (max-width: 768px) {
@@ -280,17 +255,17 @@
         width: 100%;
         border-collapse: separate;
         border-spacing: 0;
-        background: white;
+        background: var(--parchment);
         box-shadow: var(--shadow-sm);
         border-radius: var(--border-radius);
         overflow: hidden;
-        border: 1px solid var(--forest-pale);
+        border: 5px solid var(--muted-teal);
       }
 
-      th,
       td {
         padding: 16px;
-        text-align: left;
+        text-align: center;
+        background: var(--parchment);
         border-bottom: 1px solid #f0f0f0;
       }
 
@@ -303,12 +278,10 @@
       }
 
       th {
-        background: linear-gradient(
-          135deg,
-          var(--forest-light) 0%,
-          var(--forest-pale) 100%
-        );
-        color: white;
+        background: #1a3a0fff;
+        color: var(--parchment);
+        padding: 16px;
+        text-align: center;
         font-weight: 700;
         font-size: 14px;
         text-transform: uppercase;
@@ -376,18 +349,14 @@
         text-align: center;
         padding: 60px 40px;
         color: var(--text-muted);
-        background: linear-gradient(
-          135deg,
-          var(--forest-pale) 0%,
-          #ffffff 100%
-        );
+        background: var(--parchment);
         border-radius: var(--border-radius);
         box-shadow: var(--shadow-sm);
       }
 
       .placeholder h3 {
         font-family: "Rufina", serif;
-        color: var(--forest-medium);
+        color: var(--text-primary);
         font-size: 22px;
         font-weight: 600;
       }
@@ -707,11 +676,11 @@
                 </div>
               </div>
               <div class="stat-card">
-                <div class="stat-label">Total Records</div>
+                <div class="stat-label">Number of Gazettes</div>
                 <div class="stat-value">${reserveData.length}</div>
               </div>
               <div class="stat-card">
-                <div class="stat-label">Years Tracked</div>
+                <div class="stat-label">Years with Gazettes</div>
                 <div class="stat-value">${
                   Object.keys(yearlyChanges).length
                 }</div>
