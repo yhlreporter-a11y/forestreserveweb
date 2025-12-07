@@ -50,8 +50,157 @@
         --transition: all 0.3s ease;
       }
 
-      #body-container {
+      body {
         font-family: "Nunito", -apple-system, BlinkMacSystemFont, sans-serif;
+        background-color: var(--parchment);
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+      }
+
+      /* Section Management */
+      .section {
+        display: none;
+        min-height: 100vh;
+      }
+
+      .section.active {
+        display: block;
+      }
+
+      /* Navigation */
+      .nav-button {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1000;
+        background: var(--prussian-blue);
+        color: var(--parchment);
+        border: none;
+        padding: 12px 24px;
+        border-radius: var(--border-radius);
+        font-family: "Nunito", sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        box-shadow: var(--shadow-md);
+        transition: var(--transition);
+        display: none;
+      }
+
+      .nav-button:hover {
+        background: var(--forest-medium);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .nav-button.active {
+        display: block;
+      }
+
+      /* Landing Page Styles */
+      #landing-page {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 40px 20px;
+        background: linear-gradient(
+          135deg,
+          var(--parchment) 0%,
+          var(--forest-pale) 100%
+        );
+      }
+
+      .landing-content {
+        max-width: 800px;
+        text-align: center;
+        width: 100%;
+      }
+
+      .landing-title {
+        font-family: "Rufina", serif;
+        font-size: 48px;
+        font-weight: 700;
+        color: var(--prussian-blue);
+        margin-bottom: 24px;
+        line-height: 1.2;
+      }
+
+      .landing-subtitle {
+        font-size: 20px;
+        color: var(--text-secondary);
+        margin-bottom: 48px;
+        line-height: 1.6;
+      }
+
+      .landing-question {
+        font-family: "Rufina", serif;
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--forest-dark);
+        margin-bottom: 40px;
+      }
+
+      .options-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        margin-top: 40px;
+      }
+
+      .option-card {
+        background: var(--bg-panel);
+        padding: 32px;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-md);
+        cursor: pointer;
+        transition: var(--transition);
+        border: 3px solid transparent;
+        text-align: left;
+      }
+
+      .option-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--forest-light);
+      }
+
+      .option-number {
+        display: inline-block;
+        background: var(--forest-light);
+        color: var(--prussian-blue);
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 36px;
+        font-weight: 700;
+        font-size: 18px;
+        margin-bottom: 16px;
+      }
+
+      .option-title {
+        font-family: "Rufina", serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--prussian-blue);
+        margin-bottom: 12px;
+      }
+
+      .option-description {
+        font-size: 16px;
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      /* Dashboard Section */
+      #dashboard-section {
+        height: 100vh;
+      }
+
+      #body-container {
         height: 100vh;
         display: flex;
         flex-direction: row;
@@ -433,320 +582,1159 @@
         font-weight: 700;
         font-size: 16px;
       }
+
+      /* Placeholder Section Styles */
+      .placeholder-section {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 60px 20px;
+        background: linear-gradient(
+          135deg,
+          var(--parchment) 0%,
+          var(--forest-pale) 100%
+        );
+      }
+
+      .placeholder-content {
+        max-width: 700px;
+        text-align: center;
+        background: var(--bg-panel);
+        padding: 60px 40px;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-lg);
+        border: 5px solid var(--muted-teal);
+      }
+
+      .placeholder-title {
+        font-family: "Rufina", serif;
+        font-size: 36px;
+        font-weight: 700;
+        color: var(--prussian-blue);
+        margin-bottom: 24px;
+      }
+
+      .placeholder-text {
+        font-size: 18px;
+        color: var(--text-secondary);
+        line-height: 1.8;
+        margin-bottom: 32px;
+      }
+
+      .coming-soon {
+        display: inline-block;
+        background: var(--forest-light);
+        color: var(--prussian-blue);
+        padding: 12px 24px;
+        border-radius: var(--border-radius);
+        font-weight: 600;
+        font-size: 16px;
+        margin-top: 20px;
+      }
+
+      @media (max-width: 768px) {
+        .landing-title {
+          font-size: 32px;
+        }
+
+        .landing-subtitle {
+          font-size: 18px;
+        }
+
+        .landing-question {
+          font-size: 22px;
+        }
+
+        .options-grid {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+
+        .option-card {
+          padding: 24px;
+        }
+
+        .option-title {
+          font-size: 20px;
+        }
+
+        .placeholder-title {
+          font-size: 28px;
+        }
+
+        .placeholder-content {
+          padding: 40px 24px;
+        }
+
+        .nav-button {
+          top: 10px;
+          left: 10px;
+          padding: 10px 16px;
+          font-size: 12px;
+        }
+      }
     </style>
   </head>
   <body>
-    <div id="body-container">
-      <div id="map"></div>
-      <div id="panel">
-        <div class="panel-content">
-          <div class="loading">
-            <h3>Loading forest reserve data...</h3>
+    <!-- Navigation Button -->
+    <button class="nav-button" id="back-button" aria-label="Back to home">
+      ← Back to Home
+    </button>
+
+    <!-- Landing Page Section -->
+    <section id="landing-page" class="section active">
+      <div class="landing-content">
+        <h1 class="landing-title">Forest Reserve Tracker</h1>
+        <p class="landing-subtitle">
+          This platform tracks addition and removals of forest reserves in
+          Peninsular Malaysia since 2001.
+        </p>
+        <h2 class="landing-question">What would you like to do?</h2>
+        <div class="options-grid">
+          <div class="option-card" data-section="learn">
+            <div class="option-number">1</div>
+            <h3 class="option-title">
+              Learn about forest reserves and stories
+            </h3>
+            <p class="option-description">
+              Discover information about forest reserves, their importance, and
+              stories from the field.
+            </p>
+          </div>
+          <div class="option-card" data-section="explore">
+            <div class="option-number">2</div>
+            <h3 class="option-title">Explore the data</h3>
+            <p class="option-description">
+              Interactive map and dashboard to explore forest reserve changes
+              over time.
+            </p>
+          </div>
+          <div class="option-card" data-section="download">
+            <div class="option-number">3</div>
+            <h3 class="option-title">Download the data</h3>
+            <p class="option-description">
+              Access and download the complete dataset for your own analysis.
+            </p>
+          </div>
+          <div class="option-card" data-section="contribute">
+            <div class="option-number">4</div>
+            <h3 class="option-title">Contribute materials</h3>
+            <p class="option-description">
+              Share data, photos, stories, and other materials to help improve
+              this platform.
+            </p>
           </div>
         </div>
       </div>
-    </div>
+    </section>
+
+    <!-- Learn Section -->
+    <section id="learn-section" class="section">
+      <div class="placeholder-section">
+        <div class="placeholder-content">
+          <h2 class="placeholder-title">Learn about Forest Reserves</h2>
+          <p class="placeholder-text">
+            This section will contain educational content about forest reserves,
+            their importance, conservation efforts, and stories from the field.
+          </p>
+          <div class="coming-soon">Coming Soon</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard Section (Explore) -->
+    <section id="dashboard-section" class="section">
+      <div id="body-container">
+        <div id="map" role="application" aria-label="Forest reserve map"></div>
+        <div
+          id="panel"
+          role="complementary"
+          aria-label="Forest reserve details"
+        >
+          <div class="panel-content">
+            <div class="loading">
+              <h3>Loading forest reserve data...</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download-section" class="section">
+      <div class="placeholder-section">
+        <div class="placeholder-content">
+          <h2 class="placeholder-title">Download the Data</h2>
+          <p class="placeholder-text">
+            This section will provide access to download the complete forest
+            reserve dataset in various formats (CSV, JSON, GeoJSON) for your own
+            analysis and research.
+          </p>
+          <div class="coming-soon">Coming Soon</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contribute Section -->
+    <section id="contribute-section" class="section">
+      <div class="placeholder-section">
+        <div class="placeholder-content">
+          <h2 class="placeholder-title">Contribute Materials</h2>
+          <p class="placeholder-text">
+            This section will allow you to contribute data, photos, stories, and
+            other materials to help improve and expand this platform. Your
+            contributions are valuable for building a comprehensive resource.
+          </p>
+          <div class="coming-soon">Coming Soon</div>
+        </div>
+      </div>
+    </section>
 
     <script>
-      // GitHub raw URLs
-      const GEOJSON_URL =
-        "https://raw.githubusercontent.com/yhlreporter-a11y/forestreserveweb/refs/heads/main/HSK_Terengganu_small.geojson";
-      const CSV_URL =
-        "https://raw.githubusercontent.com/yhlreporter-a11y/forestreserveweb/refs/heads/main/terengganugazette-small.csv";
+      // ============================================================================
+      // Navigation System
+      // ============================================================================
 
-      // Initialize map centered on Peninsular Malaysia
-      const map = L.map("map").setView([4.5, 102.5], 7);
+      /**
+       * Shows a specific section and hides others
+       * @param {string} sectionId - ID of the section to show
+       */
+      function showSection(sectionId) {
+        // Hide all sections
+        const sections = document.querySelectorAll(".section");
+        sections.forEach((section) => section.classList.remove("active"));
 
-      // Add OpenStreetMap tiles
-      L.tileLayer(
-        "https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}{r}.{ext}",
-        {
-          minZoom: 0,
-          maxZoom: 20,
-          attribution:
-            '&copy; CNES, Distribution Airbus DS, © Airbus DS, © PlanetObserver (Contains Copernicus Data) | &copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-          ext: "jpg",
+        // Show target section
+        const targetSection = document.getElementById(sectionId);
+        if (targetSection) {
+          targetSection.classList.add("active");
         }
-      ).addTo(map);
 
-      // Store data
-      let csvData = [];
-      let geojsonData = null;
-      let forestLayer = null;
-      let currentChart = null;
-
-      // Load data from GitHub
-      async function loadData() {
-        try {
-          // Load GeoJSON
-          const geojsonResponse = await fetch(GEOJSON_URL);
-          if (!geojsonResponse.ok) {
-            throw new Error(
-              `Failed to load GeoJSON: ${geojsonResponse.status}`
-            );
+        // Show/hide back button
+        const backButton = document.getElementById("back-button");
+        if (backButton) {
+          if (sectionId === "landing-page") {
+            backButton.classList.remove("active");
+          } else {
+            backButton.classList.add("active");
           }
-          geojsonData = await geojsonResponse.json();
-          console.log(
-            "GeoJSON loaded:",
-            geojsonData.features.length,
-            "features"
-          );
+        }
 
-          // Load CSV
-          const csvResponse = await fetch(CSV_URL);
-          if (!csvResponse.ok) {
-            throw new Error(`Failed to load CSV: ${csvResponse.status}`);
+        // If showing dashboard, initialize map if needed and ensure it's properly sized
+        if (sectionId === "dashboard-section") {
+          // Set initial panel state
+          if (state.dataLoading) {
+            showLoading("Loading forest reserve data...");
+          } else if (state.dataLoaded && state.forestLayer) {
+            showPlaceholder();
+          } else if (!state.dataLoaded) {
+            showLoading("Loading forest reserve data...");
+          } else {
+            showPlaceholder();
           }
-          const csvText = await csvResponse.text();
 
-          // Parse CSV
-          Papa.parse(csvText, {
-            header: true,
-            dynamicTyping: true,
-            skipEmptyLines: true,
-            complete: function (results) {
-              csvData = results.data;
-              console.log("CSV data loaded:", csvData.length, "rows");
+          // Initialize map if not already done
+          if (!map) {
+            map = initializeMap();
+          }
 
-              // Initialize map with loaded data
-              initializeMap();
-            },
-            error: function (error) {
-              throw new Error(`Failed to parse CSV: ${error.message}`);
-            },
-          });
-        } catch (error) {
-          console.error("Error loading data:", error);
-          document.getElementById("panel").innerHTML = `
-            <div class="panel-content">
-              <div class="error">
-                <h3>Error loading data</h3>
-                <p>${error.message}</p>
-              </div>
-            </div>
-          `;
+          // Load data if not already loaded or loading
+          if (!state.dataLoaded && !state.dataLoading) {
+            loadData();
+          }
+
+          // Invalidate size to ensure proper rendering when section becomes visible
+          setTimeout(() => {
+            if (map) {
+              map.invalidateSize();
+              // Try to initialize forest layer if data is ready
+              initializeForestLayerIfReady();
+            }
+          }, 150);
+
+          // Also try after a longer delay to ensure everything is ready
+          setTimeout(() => {
+            initializeForestLayerIfReady();
+            if (map && state.dataLoaded && !state.forestLayer) {
+              // If data is loaded but layer not initialized, try again
+              initializeForestLayer();
+            }
+            // Update panel to placeholder if layer is initialized
+            if (state.forestLayer) {
+              showPlaceholder();
+            }
+          }, 300);
         }
       }
 
-      function initializeMap() {
-        // Add GeoJSON layer to map
-        forestLayer = L.geoJSON(geojsonData, {
-          style: function (feature) {
-            return {
-              fillColor: "#52b788",
-              fillOpacity: 0.3,
-              color: "#95d5b2",
-              weight: 2,
-            };
-          },
-          onEachFeature: function (feature, layer) {
-            const props = feature.properties;
+      /**
+       * Initializes navigation event listeners
+       */
+      function initializeNavigation() {
+        // Option card click handlers
+        const optionCards = document.querySelectorAll(".option-card");
+        optionCards.forEach((card) => {
+          card.addEventListener("click", function () {
+            const section = this.dataset.section;
+            if (section) {
+              const sectionMap = {
+                learn: "learn-section",
+                explore: "dashboard-section",
+                download: "download-section",
+                contribute: "contribute-section",
+              };
+              const sectionId = sectionMap[section];
+              if (sectionId) {
+                showSection(sectionId);
+              }
+            }
+          });
 
-            // Create popup content
-            const popupContent = `
-              <div class="popup-content">
-                <strong>${props.prf}</strong><br>
-                ${props.MUKIM}, ${props.STATE}
-                </div>
-            `;
+          // Add keyboard support
+          card.setAttribute("tabindex", "0");
+          card.setAttribute("role", "button");
+          card.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              this.click();
+            }
+          });
+        });
 
-            layer.bindPopup(popupContent);
+        // Back button handler
+        const backButton = document.getElementById("back-button");
+        if (backButton) {
+          backButton.addEventListener("click", () => {
+            showSection("landing-page");
+          });
+        }
+      }
 
-            // Add click handler
-            layer.on("click", function () {
-              updatePanel(props.prf, props.MUKIM, props.STATE);
-            });
+      // ============================================================================
+      // Configuration Constants
+      // ============================================================================
+      const CONFIG = {
+        DATA_SOURCES: {
+          GEOJSON_URL:
+            "https://raw.githubusercontent.com/yhlreporter-a11y/forestreserveweb/refs/heads/main/HSK_Terengganu_small.geojson",
+          CSV_URL:
+            "https://raw.githubusercontent.com/yhlreporter-a11y/forestreserveweb/refs/heads/main/terengganugazette-small.csv",
+        },
+        MAP: {
+          CENTER: [4.5, 102.5],
+          ZOOM: 7,
+          MIN_ZOOM: 0,
+          MAX_ZOOM: 20,
+        },
+        YEARS: {
+          START: 2001,
+          END: 2025,
+        },
+        STYLES: {
+          FOREST_FILL: "#52b788",
+          FOREST_FILL_OPACITY: 0.3,
+          FOREST_BORDER: "#95d5b2",
+          FOREST_BORDER_WEIGHT: 2,
+          FOREST_HOVER_OPACITY: 0.6,
+          FOREST_HOVER_WEIGHT: 3,
+          FOREST_HOVER_COLOR: "#2d6a4f",
+        },
+        RETRY: {
+          MAX_ATTEMPTS: 3,
+          DELAY: 1000,
+        },
+        RESIZE: {
+          DEBOUNCE_DELAY: 250,
+        },
+      };
 
-            // Highlight on hover
-            layer.on("mouseover", function () {
-              layer.setStyle({
-                fillOpacity: 0.6,
-                weight: 3,
-                color: "#2d6a4f",
-              });
-            });
+      // ============================================================================
+      // Application State
+      // ============================================================================
+      const state = {
+        csvData: [],
+        geojsonData: null,
+        forestLayer: null,
+        currentChart: null,
+        currentReserve: null,
+        sortState: { column: "date", direction: "desc" },
+        dataLoaded: false,
+        dataLoading: false,
+      };
 
-            layer.on("mouseout", function () {
-              layer.setStyle({
-                fillOpacity: 0.3,
-                weight: 2,
-                color: "#95d5b2",
-              });
-            });
-          },
-        }).addTo(map);
+      // ============================================================================
+      // Utility Functions
+      // ============================================================================
 
-        // Fit map to show all reserves
-        map.fitBounds(forestLayer.getBounds());
+      /**
+       * Escapes HTML to prevent XSS attacks
+       * @param {string} text - Text to escape
+       * @returns {string} Escaped text
+       */
+      function escapeHtml(text) {
+        const div = document.createElement("div");
+        div.textContent = text;
+        return div.innerHTML;
+      }
 
-        // Invalidate map size after a brief delay to ensure proper rendering
-        setTimeout(() => {
-          map.invalidateSize();
-        }, 100);
+      /**
+       * Formats a number to 2 decimal places
+       * @param {number} num - Number to format
+       * @returns {string} Formatted number
+       */
+      function formatNumber(num) {
+        return Number(num || 0).toFixed(2);
+      }
 
-        // Update placeholder
-        document.getElementById("panel").innerHTML = `
+      /**
+       * Creates a safe date object with validation
+       * @param {number} year - Year
+       * @param {number} month - Month (1-12)
+       * @param {number} day - Day
+       * @returns {Date|null} Date object or null if invalid
+       */
+      function createSafeDate(year, month, day) {
+        if (!year || !month || !day) return null;
+        const date = new Date(year, month - 1, day);
+        if (
+          date.getFullYear() === year &&
+          date.getMonth() === month - 1 &&
+          date.getDate() === day
+        ) {
+          return date;
+        }
+        return null;
+      }
+
+      /**
+       * Debounce function to limit function calls
+       * @param {Function} func - Function to debounce
+       * @param {number} wait - Wait time in milliseconds
+       * @returns {Function} Debounced function
+       */
+      function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      }
+
+      /**
+       * Sleep utility for retry delays
+       * @param {number} ms - Milliseconds to sleep
+       * @returns {Promise} Promise that resolves after delay
+       */
+      function sleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+
+      /**
+       * Fetches data with retry logic
+       * @param {string} url - URL to fetch
+       * @param {number} retries - Number of retry attempts
+       * @returns {Promise<Response>} Fetch response
+       */
+      async function fetchWithRetry(url, retries = CONFIG.RETRY.MAX_ATTEMPTS) {
+        for (let i = 0; i < retries; i++) {
+          try {
+            const response = await fetch(url);
+            if (response.ok) {
+              return response;
+            }
+            if (i < retries - 1) {
+              await sleep(CONFIG.RETRY.DELAY * (i + 1));
+            }
+          } catch (error) {
+            if (i === retries - 1) throw error;
+            await sleep(CONFIG.RETRY.DELAY * (i + 1));
+          }
+        }
+        throw new Error(`Failed to fetch after ${retries} attempts`);
+      }
+
+      // ============================================================================
+      // DOM Helper Functions
+      // ============================================================================
+
+      /**
+       * Updates the panel content
+       * @param {string} html - HTML content to set
+       */
+      function updatePanelContent(html) {
+        const panel = document.getElementById("panel");
+        if (panel) {
+          panel.innerHTML = html;
+        }
+      }
+
+      /**
+       * Shows error message in panel
+       * @param {string} message - Error message
+       */
+      function showError(message) {
+        // Only update if dashboard section is active
+        if (!isDashboardActive()) {
+          return;
+        }
+        updatePanelContent(`
+          <div class="panel-content">
+            <div class="error">
+              <h3>Error loading data</h3>
+              <p>${escapeHtml(message)}</p>
+            </div>
+          </div>
+        `);
+      }
+
+      /**
+       * Checks if dashboard section is currently active
+       * @returns {boolean} True if dashboard is active
+       */
+      function isDashboardActive() {
+        const dashboardSection = document.getElementById("dashboard-section");
+        return (
+          dashboardSection && dashboardSection.classList.contains("active")
+        );
+      }
+
+      /**
+       * Shows loading state in panel
+       * @param {string} message - Loading message
+       */
+      function showLoading(message = "Loading forest reserve data...") {
+        // Only update if dashboard section is active
+        if (!isDashboardActive()) {
+          return;
+        }
+        updatePanelContent(`
+          <div class="panel-content">
+            <div class="loading">
+              <h3>${escapeHtml(message)}</h3>
+            </div>
+          </div>
+        `);
+      }
+
+      /**
+       * Shows placeholder message in panel
+       * @param {string} message - Placeholder message
+       */
+      function showPlaceholder(
+        message = "Select a forest reserve on the map to view details"
+      ) {
+        // Only update if dashboard section is active
+        if (!isDashboardActive()) {
+          return;
+        }
+        updatePanelContent(`
           <div class="panel-content">
             <div class="placeholder">
-              <h3>Select a forest reserve on the map to view details</h3>
+              <h3>${escapeHtml(message)}</h3>
             </div>
+          </div>
+        `);
+      }
+
+      // ============================================================================
+      // Map Initialization
+      // ============================================================================
+
+      /**
+       * Initializes the Leaflet map
+       * @returns {L.Map} Leaflet map instance
+       */
+      function initializeMap() {
+        // Check if map already exists
+        if (window.mapInstance) {
+          return window.mapInstance;
+        }
+
+        const map = L.map("map", {
+          center: CONFIG.MAP.CENTER,
+          zoom: CONFIG.MAP.ZOOM,
+        });
+
+        L.tileLayer(
+          "https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}{r}.{ext}",
+          {
+            minZoom: CONFIG.MAP.MIN_ZOOM,
+            maxZoom: CONFIG.MAP.MAX_ZOOM,
+            attribution:
+              '&copy; CNES, Distribution Airbus DS, © Airbus DS, © PlanetObserver (Contains Copernicus Data) | &copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            ext: "jpg",
+          }
+        ).addTo(map);
+
+        window.mapInstance = map;
+        return map;
+      }
+
+      // Map will be initialized when dashboard section is first shown
+      // Using window.mapInstance for global access
+      let map = null;
+
+      // ============================================================================
+      // Data Loading Functions
+      // ============================================================================
+
+      /**
+       * Loads and parses GeoJSON data
+       * @returns {Promise<Object>} GeoJSON data
+       */
+      async function loadGeoJSON() {
+        try {
+          const response = await fetchWithRetry(
+            CONFIG.DATA_SOURCES.GEOJSON_URL
+          );
+          const data = await response.json();
+
+          if (!data || !data.features || !Array.isArray(data.features)) {
+            throw new Error("Invalid GeoJSON format");
+          }
+
+          console.log("GeoJSON loaded:", data.features.length, "features");
+          return data;
+        } catch (error) {
+          console.error("Error loading GeoJSON:", error);
+          throw new Error(`Failed to load GeoJSON: ${error.message}`);
+        }
+      }
+
+      /**
+       * Loads and parses CSV data
+       * @returns {Promise<Array>} Parsed CSV data
+       */
+      function loadCSV() {
+        return new Promise((resolve, reject) => {
+          fetchWithRetry(CONFIG.DATA_SOURCES.CSV_URL)
+            .then((response) => response.text())
+            .then((csvText) => {
+              Papa.parse(csvText, {
+                header: true,
+                dynamicTyping: true,
+                skipEmptyLines: true,
+                complete: function (results) {
+                  if (results.errors && results.errors.length > 0) {
+                    console.warn("CSV parsing warnings:", results.errors);
+                  }
+                  const data = results.data.filter((row) => {
+                    // Validate required fields
+                    return row.PRF && row.YEAR;
+                  });
+                  console.log("CSV data loaded:", data.length, "rows");
+                  resolve(data);
+                },
+                error: function (error) {
+                  reject(new Error(`Failed to parse CSV: ${error.message}`));
+                },
+              });
+            })
+            .catch(reject);
+        });
+      }
+
+      /**
+       * Loads all data sources
+       */
+      async function loadData() {
+        // Prevent multiple simultaneous loads
+        if (state.dataLoading) {
+          return;
+        }
+
+        try {
+          state.dataLoading = true;
+
+          // Load data in parallel for better performance
+          const [geojsonData, csvData] = await Promise.all([
+            loadGeoJSON(),
+            loadCSV(),
+          ]);
+
+          state.geojsonData = geojsonData;
+          state.csvData = csvData;
+          state.dataLoaded = true;
+          state.dataLoading = false;
+
+          console.log("Data loaded successfully");
+
+          // If dashboard is currently shown, initialize the layer
+          const dashboardSection = document.getElementById("dashboard-section");
+          if (
+            dashboardSection &&
+            dashboardSection.classList.contains("active")
+          ) {
+            // Wait a bit to ensure map container is visible
+            setTimeout(() => {
+              initializeForestLayerIfReady();
+              // Also try after a longer delay as fallback
+              setTimeout(() => {
+                if (map && state.dataLoaded && !state.forestLayer) {
+                  initializeForestLayer();
+                }
+              }, 200);
+            }, 100);
+          }
+        } catch (error) {
+          console.error("Error loading data:", error);
+          state.dataLoading = false;
+          // Only show error if dashboard section is active
+          const dashboardSection = document.getElementById("dashboard-section");
+          if (
+            dashboardSection &&
+            dashboardSection.classList.contains("active")
+          ) {
+            showError(error.message);
+          }
+        }
+      }
+
+      // ============================================================================
+      // Map Layer Functions
+      // ============================================================================
+
+      /**
+       * Gets default style for forest reserve features
+       * @returns {Object} Leaflet style object
+       */
+      function getDefaultStyle() {
+        return {
+          fillColor: CONFIG.STYLES.FOREST_FILL,
+          fillOpacity: CONFIG.STYLES.FOREST_FILL_OPACITY,
+          color: CONFIG.STYLES.FOREST_BORDER,
+          weight: CONFIG.STYLES.FOREST_BORDER_WEIGHT,
+        };
+      }
+
+      /**
+       * Gets hover style for forest reserve features
+       * @returns {Object} Leaflet style object
+       */
+      function getHoverStyle() {
+        return {
+          fillOpacity: CONFIG.STYLES.FOREST_HOVER_OPACITY,
+          weight: CONFIG.STYLES.FOREST_HOVER_WEIGHT,
+          color: CONFIG.STYLES.FOREST_HOVER_COLOR,
+        };
+      }
+
+      /**
+       * Creates popup content for a forest reserve
+       * @param {Object} props - Feature properties
+       * @returns {string} HTML popup content
+       */
+      function createPopupContent(props) {
+        const reserveName = escapeHtml(props.prf || "Unknown");
+        const mukim = escapeHtml(props.MUKIM || "");
+        const state = escapeHtml(props.STATE || "");
+        return `
+          <div class="popup-content">
+            <strong>${reserveName}</strong><br>
+            ${mukim}${mukim && state ? ", " : ""}${state}
           </div>
         `;
       }
 
-      function updatePanel(reserveName, district, state) {
-        // Filter data for this reserve
-        const reserveData = csvData.filter((row) => row.PRF === reserveName);
+      /**
+       * Handles feature click event
+       * @param {Object} props - Feature properties
+       */
+      function handleFeatureClick(props) {
+        const reserveName = props.prf;
+        const district = props.MUKIM || "";
+        const stateName = props.STATE || "";
 
-        if (reserveData.length === 0) {
-          document.getElementById("panel").innerHTML = `
-            <div class="panel-content">
-              <div class="placeholder">
-                <h3>No data available for ${reserveName}</h3>
-              </div>
-            </div>
-          `;
+        if (reserveName) {
+          updatePanel(reserveName, district, stateName);
+        }
+      }
+
+      /**
+       * Checks if map and data are ready, then initializes the forest layer
+       */
+      function initializeForestLayerIfReady() {
+        if (!map) {
+          console.log("Map not initialized yet");
           return;
         }
 
-        // Calculate net change
-        const netChange = reserveData.reduce((sum, row) => {
-          return sum + (row.ADD || 0) - (row.REMOVE || 0);
-        }, 0);
-
-        // Calculate yearly changes
-        const yearlyChanges = {};
-        reserveData.forEach((row) => {
-          const year = row.YEAR;
-          if (!yearlyChanges[year]) {
-            yearlyChanges[year] = 0;
-          }
-          yearlyChanges[year] += (row.ADD || 0) - (row.REMOVE || 0);
-        });
-
-        // Create complete year range from 2001 to 2025
-        const allYears = [];
-        for (let year = 2001; year <= 2025; year++) {
-          allYears.push(year.toString());
+        if (!state.geojsonData) {
+          console.log("GeoJSON data not loaded yet");
+          return;
         }
 
-        // Map changes to all years (0 for years with no data)
-        const changes = allYears.map((year) => yearlyChanges[year] || 0);
+        initializeForestLayer();
+      }
 
-        // Get all changes (additions and removals)
-        const allChanges = [];
-        reserveData.forEach((row) => {
-          if (row.ADD > 0) {
-            allChanges.push({
-              date: `${row.DAY}/${row.MONTH}/${row.YEAR}`,
-              dateSort: new Date(row.YEAR, row.MONTH - 1, row.DAY),
-              change: row.ADD,
-              gazette: row.GAZETTENUM,
-            });
+      /**
+       * Initializes the forest reserve layer on the map
+       */
+      function initializeForestLayer() {
+        if (!state.geojsonData) {
+          console.error("GeoJSON data not loaded");
+          return;
+        }
+
+        if (!map) {
+          console.error("Map not initialized");
+          return;
+        }
+
+        // Ensure map container is visible
+        const mapContainer = document.getElementById("map");
+        if (!mapContainer || mapContainer.offsetWidth === 0) {
+          console.warn("Map container not visible, will retry");
+          setTimeout(() => initializeForestLayer(), 200);
+          return;
+        }
+
+        try {
+          // Remove existing layer if present
+          if (state.forestLayer) {
+            map.removeLayer(state.forestLayer);
+            state.forestLayer = null;
           }
-          if (row.REMOVE > 0) {
-            allChanges.push({
-              date: `${row.DAY}/${row.MONTH}/${row.YEAR}`,
-              dateSort: new Date(row.YEAR, row.MONTH - 1, row.DAY),
-              change: -row.REMOVE,
-              gazette: row.GAZETTENUM,
-            });
+
+          // Add GeoJSON layer to map
+          state.forestLayer = L.geoJSON(state.geojsonData, {
+            style: getDefaultStyle,
+            onEachFeature: function (feature, layer) {
+              const props = feature.properties || {};
+
+              // Create and bind popup
+              const popupContent = createPopupContent(props);
+              layer.bindPopup(popupContent);
+
+              // Add click handler
+              layer.on("click", () => handleFeatureClick(props));
+
+              // Add hover effects
+              layer.on("mouseover", function () {
+                this.setStyle(getHoverStyle());
+              });
+
+              layer.on("mouseout", function () {
+                this.setStyle(getDefaultStyle());
+              });
+            },
+          }).addTo(map);
+
+          console.log("Forest layer initialized successfully");
+
+          // Fit map to show all reserves
+          try {
+            const bounds = state.forestLayer.getBounds();
+            if (bounds && bounds.isValid()) {
+              map.fitBounds(bounds, { padding: [20, 20] });
+            }
+          } catch (error) {
+            console.warn("Could not fit bounds:", error);
+          }
+
+          // Invalidate map size after a brief delay to ensure proper rendering
+          setTimeout(() => {
+            if (map) {
+              map.invalidateSize();
+            }
+          }, 100);
+
+          // Show placeholder
+          showPlaceholder();
+        } catch (error) {
+          console.error("Error initializing forest layer:", error);
+          showError(`Failed to initialize map layer: ${error.message}`);
+        }
+      }
+
+      // ============================================================================
+      // Data Processing Functions
+      // ============================================================================
+
+      /**
+       * Calculates net change from reserve data
+       * @param {Array} reserveData - Filtered reserve data
+       * @returns {number} Net change in hectares
+       */
+      function calculateNetChange(reserveData) {
+        return reserveData.reduce((sum, row) => {
+          const add = Number(row.ADD) || 0;
+          const remove = Number(row.REMOVE) || 0;
+          return sum + add - remove;
+        }, 0);
+      }
+
+      /**
+       * Calculates yearly changes from reserve data
+       * @param {Array} reserveData - Filtered reserve data
+       * @returns {Object} Yearly changes object
+       */
+      function calculateYearlyChanges(reserveData) {
+        const yearlyChanges = {};
+        reserveData.forEach((row) => {
+          const year = String(row.YEAR);
+          if (!year) return;
+
+          const add = Number(row.ADD) || 0;
+          const remove = Number(row.REMOVE) || 0;
+          const change = add - remove;
+
+          yearlyChanges[year] = (yearlyChanges[year] || 0) + change;
+        });
+        return yearlyChanges;
+      }
+
+      /**
+       * Creates array of all years in range
+       * @returns {Array<string>} Array of year strings
+       */
+      function createYearRange() {
+        const years = [];
+        for (let year = CONFIG.YEARS.START; year <= CONFIG.YEARS.END; year++) {
+          years.push(String(year));
+        }
+        return years;
+      }
+
+      /**
+       * Processes reserve data into change records
+       * @param {Array} reserveData - Filtered reserve data
+       * @returns {Array} Array of change records
+       */
+      function processChangeRecords(reserveData) {
+        const changes = [];
+
+        reserveData.forEach((row) => {
+          const year = Number(row.YEAR);
+          const month = Number(row.MONTH);
+          const day = Number(row.DAY);
+          const add = Number(row.ADD) || 0;
+          const remove = Number(row.REMOVE) || 0;
+          const gazette = row.GAZETTENUM || "";
+
+          // Process additions
+          if (add > 0) {
+            const date = createSafeDate(year, month, day);
+            if (date) {
+              changes.push({
+                date: `${day}/${month}/${year}`,
+                dateSort: date,
+                change: add,
+                gazette: String(gazette),
+              });
+            }
+          }
+
+          // Process removals
+          if (remove > 0) {
+            const date = createSafeDate(year, month, day);
+            if (date) {
+              changes.push({
+                date: `${day}/${month}/${year}`,
+                dateSort: date,
+                change: -remove,
+                gazette: String(gazette),
+              });
+            }
           }
         });
 
         // Sort by date (most recent first)
-        allChanges.sort((a, b) => b.dateSort - a.dateSort);
+        return changes.sort((a, b) => b.dateSort - a.dateSort);
+      }
 
-        // Update panel HTML
-        const panelHTML = `
+      // ============================================================================
+      // Panel Update Functions
+      // ============================================================================
+
+      /**
+       * Updates the panel with reserve information
+       * @param {string} reserveName - Name of the reserve
+       * @param {string} district - District name
+       * @param {string} stateName - State name
+       */
+      function updatePanel(reserveName, district, stateName) {
+        if (!reserveName) {
+          showPlaceholder("Please select a valid forest reserve");
+          return;
+        }
+
+        // Filter data for this reserve
+        const reserveData = state.csvData.filter(
+          (row) => String(row.PRF) === String(reserveName)
+        );
+
+        if (reserveData.length === 0) {
+          showPlaceholder(`No data available for ${escapeHtml(reserveName)}`);
+          return;
+        }
+
+        // Store current reserve
+        state.currentReserve = reserveName;
+
+        // Calculate statistics
+        const netChange = calculateNetChange(reserveData);
+        const yearlyChanges = calculateYearlyChanges(reserveData);
+        const allYears = createYearRange();
+        const changes = allYears.map((year) => yearlyChanges[year] || 0);
+        const allChanges = processChangeRecords(reserveData);
+
+        // Reset sort state
+        state.sortState = { column: "date", direction: "desc" };
+
+        // Generate panel HTML
+        const panelHTML = generatePanelHTML(
+          reserveName,
+          district,
+          stateName,
+          netChange,
+          reserveData.length,
+          Object.keys(yearlyChanges).length,
+          allChanges
+        );
+
+        updatePanelContent(panelHTML);
+
+        // Initialize interactive elements after DOM update
+        setTimeout(() => {
+          initializeTableSorting(allChanges);
+          createYearlyChart(allYears, changes);
+        }, 0);
+      }
+
+      /**
+       * Generates HTML for the panel
+       * @param {string} reserveName - Reserve name
+       * @param {string} district - District
+       * @param {string} stateName - State
+       * @param {number} netChange - Net change value
+       * @param {number} gazetteCount - Number of gazettes
+       * @param {number} yearCount - Years with gazettes
+       * @param {Array} allChanges - All change records
+       * @returns {string} HTML string
+       */
+      function generatePanelHTML(
+        reserveName,
+        district,
+        stateName,
+        netChange,
+        gazetteCount,
+        yearCount,
+        allChanges
+      ) {
+        const safeName = escapeHtml(reserveName);
+        const safeDistrict = escapeHtml(district);
+        const safeState = escapeHtml(stateName);
+        const netChangeClass = netChange >= 0 ? "positive" : "negative";
+        const netChangeSign = netChange >= 0 ? "+" : "";
+
+        const tableRows =
+          allChanges.length > 0
+            ? allChanges
+                .map((item) => {
+                  const changeClass =
+                    item.change >= 0 ? "positive" : "negative";
+                  const changeSign = item.change >= 0 ? "+" : "";
+                  return `
+                    <tr>
+                      <td>${escapeHtml(item.date)}</td>
+                      <td class="${changeClass}">${changeSign}${formatNumber(
+                    item.change
+                  )}</td>
+                      <td>${escapeHtml(item.gazette)}</td>
+                    </tr>
+                  `;
+                })
+                .join("")
+            : '<tr><td colspan="3" style="text-align:center;">No changes recorded</td></tr>';
+
+        return `
           <div class="panel-content">
             <div class="panel-header">
-              <h2>${reserveName}</h2>
-            <p>${district}, ${state}</p>
+              <h2>${safeName}</h2>
+              <p>${safeDistrict}${
+          safeDistrict && safeState ? ", " : ""
+        }${safeState}</p>
             </div>
 
             <div class="stats-grid">
               <div class="stat-card">
-                <div class="stat-label">Net Change Since 2001</div>
-                <div class="stat-value ${
-                  netChange >= 0 ? "positive" : "negative"
-                }">
-                  ${netChange >= 0 ? "+" : ""}${netChange.toFixed(2)}
+                <div class="stat-label">Net Change Since ${
+                  CONFIG.YEARS.START
+                }</div>
+                <div class="stat-value ${netChangeClass}">
+                  ${netChangeSign}${formatNumber(netChange)}
                   <span class="stat-unit">ha</span>
                 </div>
               </div>
               <div class="stat-card">
                 <div class="stat-label">Number of Gazettes</div>
-                <div class="stat-value">${reserveData.length}</div>
+                <div class="stat-value">${gazetteCount}</div>
               </div>
               <div class="stat-card">
                 <div class="stat-label">Years with Gazettes</div>
-                <div class="stat-value">${
-                  Object.keys(yearlyChanges).length
-                }</div>
+                <div class="stat-value">${yearCount}</div>
               </div>
             </div>
 
             <div class="chart-container">
               <div class="chart-title">Yearly Net Changes in Area (hectares)</div>
-              <canvas id="yearlyChart"></canvas>
+              <canvas id="yearlyChart" aria-label="Yearly net changes chart"></canvas>
             </div>
 
             <div class="chart-title">All Changes</div>
-            <table id="changesTable">
+            <table id="changesTable" role="table">
               <thead>
                 <tr>
-                  <th class="sortable" data-column="date">Date</th>
-                  <th class="sortable" data-column="change">Change (ha)</th>
-                  <th>Gazette No.</th>
+                  <th class="sortable" data-column="date" role="columnheader" tabindex="0" aria-sort="descending">Date</th>
+                  <th class="sortable" data-column="change" role="columnheader" tabindex="0" aria-sort="none">Change (ha)</th>
+                  <th role="columnheader">Gazette No.</th>
                 </tr>
               </thead>
               <tbody>
-                ${
-                  allChanges.length > 0
-                    ? allChanges
-                        .map(
-                          (item) => `
-                    <tr>
-                      <td>${item.date}</td>
-                      <td class="${
-                        item.change >= 0 ? "positive" : "negative"
-                      }">${item.change >= 0 ? "+" : ""}${item.change.toFixed(
-                            2
-                          )}</td>
-                      <td>${item.gazette}</td>
-                    </tr>
-                  `
-                        )
-                        .join("")
-                    : '<tr><td colspan="3" style="text-align:center;">No changes recorded</td></tr>'
-                }
+                ${tableRows}
               </tbody>
             </table>
           </div>
         `;
+      }
 
-        document.getElementById("panel").innerHTML = panelHTML;
+      /**
+       * Initializes table sorting functionality
+       * @param {Array} changesData - Array of change records
+       */
+      function initializeTableSorting(changesData) {
+        const table = document.getElementById("changesTable");
+        if (!table) return;
 
-        // Add sorting functionality
-        let currentSort = { column: "date", direction: "desc" };
-        let changesData = [...allChanges];
+        const sortableHeaders = table.querySelectorAll("th.sortable");
+        if (sortableHeaders.length === 0) return;
 
+        // Store a copy of the data for sorting
+        let sortedData = [...changesData];
+
+        /**
+         * Sorts the table by the specified column
+         * @param {string} column - Column name to sort by
+         */
         function sortTable(column) {
-          const table = document.getElementById("changesTable");
-          const headers = table.querySelectorAll("th.sortable");
-
           // Toggle direction if same column, otherwise default to desc
-          if (currentSort.column === column) {
-            currentSort.direction =
-              currentSort.direction === "asc" ? "desc" : "asc";
+          if (state.sortState.column === column) {
+            state.sortState.direction =
+              state.sortState.direction === "asc" ? "desc" : "asc";
           } else {
-            currentSort.column = column;
-            currentSort.direction = "desc";
+            state.sortState.column = column;
+            state.sortState.direction = "desc";
           }
 
           // Sort data
-          changesData.sort((a, b) => {
+          sortedData.sort((a, b) => {
             let aVal, bVal;
             if (column === "date") {
               aVal = a.dateSort;
@@ -754,75 +1742,120 @@
             } else if (column === "change") {
               aVal = a.change;
               bVal = b.change;
+            } else {
+              return 0;
             }
 
-            if (currentSort.direction === "asc") {
-              return aVal > bVal ? 1 : -1;
+            if (state.sortState.direction === "asc") {
+              return aVal > bVal ? 1 : aVal < bVal ? -1 : 0;
             } else {
-              return aVal < bVal ? 1 : -1;
+              return aVal < bVal ? 1 : aVal > bVal ? -1 : 0;
             }
           });
 
-          // Update header classes
-          headers.forEach((header) => {
+          // Update header classes and ARIA attributes
+          sortableHeaders.forEach((header) => {
+            const headerColumn = header.dataset.column;
             header.classList.remove("asc", "desc");
-            if (header.dataset.column === column) {
-              header.classList.add(currentSort.direction);
+            header.setAttribute("aria-sort", "none");
+
+            if (headerColumn === column) {
+              header.classList.add(state.sortState.direction);
+              header.setAttribute(
+                "aria-sort",
+                state.sortState.direction === "asc" ? "ascending" : "descending"
+              );
             }
           });
 
           // Update table body
           const tbody = table.querySelector("tbody");
-          tbody.innerHTML = changesData
-            .map(
-              (item) => `
-            <tr>
-              <td>${item.date}</td>
-              <td class="${item.change >= 0 ? "positive" : "negative"}">${
-                item.change >= 0 ? "+" : ""
-              }${item.change.toFixed(2)}</td>
-              <td>${item.gazette}</td>
-            </tr>
-          `
-            )
-            .join("");
+          if (tbody) {
+            tbody.innerHTML = sortedData
+              .map((item) => {
+                const changeClass = item.change >= 0 ? "positive" : "negative";
+                const changeSign = item.change >= 0 ? "+" : "";
+                return `
+                  <tr>
+                    <td>${escapeHtml(item.date)}</td>
+                    <td class="${changeClass}">${changeSign}${formatNumber(
+                  item.change
+                )}</td>
+                    <td>${escapeHtml(item.gazette)}</td>
+                  </tr>
+                `;
+              })
+              .join("");
+          }
         }
 
-        // Attach click handlers to sortable headers
-        const sortableHeaders = document.querySelectorAll("th.sortable");
+        // Attach event handlers
         sortableHeaders.forEach((header) => {
-          header.addEventListener("click", () => {
-            sortTable(header.dataset.column);
+          const column = header.dataset.column;
+
+          // Click handler
+          header.addEventListener("click", () => sortTable(column));
+
+          // Keyboard handler for accessibility
+          header.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              sortTable(column);
+            }
           });
         });
 
         // Set initial sort indicator
-        const dateHeader = document.querySelector('th[data-column="date"]');
+        const dateHeader = table.querySelector('th[data-column="date"]');
         if (dateHeader) {
           dateHeader.classList.add("desc");
+          dateHeader.setAttribute("aria-sort", "descending");
         }
+      }
 
-        // Create chart
-        const ctx = document.getElementById("yearlyChart").getContext("2d");
+      /**
+       * Creates the yearly changes chart
+       * @param {Array<string>} labels - Year labels
+       * @param {Array<number>} data - Change values
+       */
+      function createYearlyChart(labels, data) {
+        const canvas = document.getElementById("yearlyChart");
+        if (!canvas) return;
+
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return;
 
         // Destroy previous chart if exists
-        if (currentChart) {
-          currentChart.destroy();
+        if (state.currentChart) {
+          state.currentChart.destroy();
+          state.currentChart = null;
         }
 
-        currentChart = new Chart(ctx, {
+        // Use CSS variables for colors
+        const positiveColor =
+          getComputedStyle(document.documentElement).getPropertyValue(
+            "--blue-primary"
+          ) || "#0066cc";
+        const negativeColor =
+          getComputedStyle(document.documentElement).getPropertyValue(
+            "--red-primary"
+          ) || "#d32f2f";
+
+        state.currentChart = new Chart(ctx, {
           type: "bar",
           data: {
-            labels: allYears,
+            labels: labels,
             datasets: [
               {
                 label: "Net Change (ha)",
-                data: changes,
-                backgroundColor: changes.map((val) =>
-                  val >= 0 ? "#007bff" : "#dc3545"
+                data: data,
+                backgroundColor: data.map((val) =>
+                  val >= 0 ? positiveColor : negativeColor
                 ),
-                borderColor: changes.map((val) =>
-                  val >= 0 ? "#0056b3" : "#bd2130"
+                borderColor: data.map((val) =>
+                  val >= 0
+                    ? positiveColor.replace("cc", "99")
+                    : negativeColor.replace("2f", "1f")
                 ),
                 borderWidth: 1,
                 borderRadius: 4,
@@ -847,6 +1880,13 @@
                 bodyFont: {
                   size: 13,
                 },
+                callbacks: {
+                  label: function (context) {
+                    const value = context.parsed.y;
+                    const sign = value >= 0 ? "+" : "";
+                    return `Net Change: ${sign}${formatNumber(value)} ha`;
+                  },
+                },
               },
             },
             scales: {
@@ -858,6 +1898,8 @@
                   font: {
                     size: 11,
                   },
+                  maxRotation: 45,
+                  minRotation: 45,
                 },
               },
               y: {
@@ -867,7 +1909,7 @@
                 },
                 ticks: {
                   callback: function (value) {
-                    return value;
+                    return formatNumber(value);
                   },
                   font: {
                     size: 12,
@@ -879,17 +1921,44 @@
         });
       }
 
-      // Handle window resize for map
-      window.addEventListener("resize", () => {
-        if (map) {
-          setTimeout(() => {
-            map.invalidateSize();
-          }, 100);
-        }
-      });
+      // ============================================================================
+      // Event Handlers
+      // ============================================================================
 
-      // Load data when page loads
-      loadData();
+      /**
+       * Handles window resize event with debouncing
+       */
+      const handleResize = debounce(() => {
+        if (map) {
+          map.invalidateSize();
+        }
+      }, CONFIG.RESIZE.DEBOUNCE_DELAY);
+
+      // ============================================================================
+      // Initialization
+      // ============================================================================
+
+      /**
+       * Initializes the application
+       */
+      function init() {
+        // Initialize navigation
+        initializeNavigation();
+
+        // Add event listeners
+        window.addEventListener("resize", handleResize);
+
+        // Load data when page loads (for dashboard section)
+        // Data will be ready when user navigates to dashboard
+        loadData();
+      }
+
+      // Start the application when DOM is ready
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init);
+      } else {
+        init();
+      }
     </script>
   </body>
 </html>
