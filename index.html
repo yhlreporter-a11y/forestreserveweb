@@ -1335,10 +1335,12 @@
             "https://raw.githubusercontent.com/yhlreporter-a11y/forestreserveweb/refs/heads/main/terengganugazette-small.csv",
         },
         MAP: {
-          CENTER: [4.5, 102.5],
-          ZOOM: 7,
-          MIN_ZOOM: 7,
-          MAX_ZOOM: 13,
+          CENTER: [3.97, 102.49],
+          START_ZOOM: 7.5,
+          MIN_ZOOM: 6.5,
+          MAX_ZOOM: 11,
+          MAPBOX_ACCESS_TOKEN:
+            "pk.eyJ1IjoieWFvaHVhbGF3IiwiYSI6ImNtajdkenhqdzAzbWszaHB3YTJ2b2owdDAifQ.KRpjr-oIWYZd38h0qy1g9g",
         },
         YEARS: {
           START: 2001,
@@ -1347,10 +1349,10 @@
         STYLES: {
           FOREST_FILL: "#52b788",
           FOREST_FILL_OPACITY: 0.3,
-          FOREST_BORDER: "#95d5b2",
+          FOREST_BORDER: "#2d6a4f",
           FOREST_BORDER_WEIGHT: 2,
           FOREST_HOVER_OPACITY: 0.6,
-          FOREST_HOVER_WEIGHT: 3,
+          FOREST_HOVER_WEIGHT: 2,
           FOREST_HOVER_COLOR: "#2d6a4f",
         },
         RETRY: {
@@ -1570,30 +1572,18 @@
 
         const map = L.map("map", {
           center: CONFIG.MAP.CENTER,
-          zoom: CONFIG.MAP.ZOOM,
+          zoom: CONFIG.MAP.START_ZOOM,
         });
 
         L.tileLayer(
-          "https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.{ext}",
+          `https://api.mapbox.com/styles/v1/yaohualaw/cmj7bt7ol000o01s6a0xfcbfv/tiles/256/{z}/{x}/{y}@2x?access_token=${CONFIG.MAP.MAPBOX_ACCESS_TOKEN}`,
           {
             minZoom: CONFIG.MAP.MIN_ZOOM,
             maxZoom: CONFIG.MAP.MAX_ZOOM,
             attribution:
-              '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-            ext: "png",
+              '&copy; <a href="https://www.mapbox.com/about/maps/" target="_blank">Mapbox</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
           }
         ).addTo(map);
-
-        // L.tileLayer(
-        //   "https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}{r}.{ext}",
-        //   {
-        //     minZoom: CONFIG.MAP.MIN_ZOOM,
-        //     maxZoom: CONFIG.MAP.MAX_ZOOM,
-        //     attribution:
-        //       '&copy; CNES, Distribution Airbus DS, © Airbus DS, © PlanetObserver (Contains Copernicus Data) | &copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        //     ext: "jpg",
-        //   }
-        // ).addTo(map);
 
         window.mapInstance = map;
         return map;
@@ -1768,14 +1758,38 @@
       /**
        * Handles feature click event
        * @param {Object} props - Feature properties
+       * @param {L.Layer} layer - Leaflet layer object
        */
-      function handleFeatureClick(props) {
+      function handleFeatureClick(props, layer) {
         const reserveName = props.prf;
         const district = props.MUKIM || "";
         const stateName = props.STATE || "";
 
         if (reserveName) {
           updatePanel(reserveName, district, stateName);
+        }
+
+        // Center the map on the clicked polygon
+        if (layer && map) {
+          try {
+            const bounds = layer.getBounds();
+            if (bounds && bounds.isValid()) {
+              map.fitBounds(bounds, { padding: [50, 50] });
+            }
+          } catch (error) {
+            console.warn("Could not center map on feature:", error);
+            // Fallback: try to get center point if bounds fails
+            try {
+              const center = layer.getBounds
+                ? layer.getBounds().getCenter()
+                : null;
+              if (center) {
+                map.setView(center, map.getZoom() + 1);
+              }
+            } catch (fallbackError) {
+              console.warn("Could not get feature center:", fallbackError);
+            }
+          }
         }
       }
 
@@ -1836,7 +1850,9 @@
               layer.bindPopup(popupContent);
 
               // Add click handler
-              layer.on("click", () => handleFeatureClick(props));
+              layer.on("click", function () {
+                handleFeatureClick(props, this);
+              });
 
               // Add hover effects
               layer.on("mouseover", function () {
@@ -1851,19 +1867,11 @@
 
           console.log("Forest layer initialized successfully");
 
-          // Fit map to show all reserves
-          try {
-            const bounds = state.forestLayer.getBounds();
-            if (bounds && bounds.isValid()) {
-              map.fitBounds(bounds, { padding: [20, 20] });
-            }
-          } catch (error) {
-            console.warn("Could not fit bounds:", error);
-          }
-
-          // Invalidate map size after a brief delay to ensure proper rendering
+          // Ensure map is centered on the configured center coordinates
+          // and invalidate map size after a brief delay to ensure proper rendering
           setTimeout(() => {
             if (map) {
+              map.setView(CONFIG.MAP.CENTER, CONFIG.MAP.ZOOM);
               map.invalidateSize();
             }
           }, 100);
